@@ -6,7 +6,7 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Silex\Application;
-use EncreInformatique\SilexRssProvider\RssProvider;
+use EncreInformatique\SilexRssProvider\Provider\RssProvider;
 use Assert\Assertion;
 
 /**
@@ -59,20 +59,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
      * @param string $name
      * @param mixed  $value
      *
-     * @When I add an entry :url with parameter :name and value :value
+     * @When I add an entry :url with title :title and date :date
      */
-    public function addEntry($url, $name = null, $value = null)
+    public function addEntry($url, $title = null, $date = null)
     {
-        switch ($name)
-        {
-            case 'pubDate':
-                $datetime = new \DateTime($value);
-                $this->app['rss']->addEntry($url, 1.0, 'yearly', $datetime);
-                break;
-
-            default:
-                $this->app['rss']->addEntry($url);
-        }
+        $this->app['rss']->addEntry($url, $title, new \DateTime($date));
     }
 
     /**
