@@ -1,8 +1,11 @@
 # Silex RSS Provider
-==============================
+
 This library provide a service for Xml generation for RSS feeds.
 
 The provider supports the 2.0 version of [Silex](http://silex.sensiolabs.org/).
+
+## Silex in maintenance mode
+Silex is now in maintenance mode. Ends of life is set to [June 2018](http://symfony.com/blog/the-end-of-silex).
 
 Installation instruction
 ------------------------
